@@ -20,5 +20,9 @@
     "hardhat-gas-reporter": "^1.0.8",
     "solidity-coverage": "^0.8.0",
     "typechain": "^8.1.0"
+  },
+  "dependencies": {
+    "@aave/core-v3": "^1.17.1",
+    "dotenv": "^16.0.3"
   }
 }
