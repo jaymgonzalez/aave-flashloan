@@ -1,11 +1,11 @@
 const hre = require('hardhat')
 
+const IPoolAddress = '0xc4dCB5126a3AfEd129BC3668Ea19285A9f56D15D'
+
 async function main() {
   console.log('deploying...')
   const FlashLoan = await hre.ethers.getContractFactory('FlashLoan')
-  const flashLoan = await FlashLoan.deploy(
-    '0xc4dCB5126a3AfEd129BC3668Ea19285A9f56D15D'
-  )
+  const flashLoan = await FlashLoan.deploy(IPoolAddress)
 
   await flashLoan.deployed()
 
