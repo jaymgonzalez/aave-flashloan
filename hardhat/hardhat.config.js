@@ -9,7 +9,9 @@ const PRIVATE_KEY2 = process.env.PRIVATE_KEY2 || ''
 const ARBITRUM_RPC_URL = process.env.ARBITRUM_RPC_URL || ''
 
 module.exports = {
-  solidity: '0.8.10',
+  solidity: {
+    compilers: [{ version: '0.8.10' }, { version: '0.7.6' }],
+  },
   defaultNetwork: 'localhost',
   networks: {
     localhost: {
