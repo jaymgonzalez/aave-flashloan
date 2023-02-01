@@ -1,7 +1,7 @@
 const { searchPairsMatchingQuery } = require('dexscreener-api')
 
 async function main() {
-  const searchResponse = await searchPairsMatchingQuery('WBNB')
+  const searchResponse = await searchPairsMatchingQuery('WBTC')
 
   console.log(searchResponse)
 }

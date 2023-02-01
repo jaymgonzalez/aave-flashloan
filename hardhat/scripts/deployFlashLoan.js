@@ -1,6 +1,9 @@
 const hre = require('hardhat')
-
+// ETH GOERLI
 const IPoolAddress = '0xc4dCB5126a3AfEd129BC3668Ea19285A9f56D15D'
+
+// ARBITRUM
+// const IPoolAddress = '0xC911B590248d127aD18546B186cC6B324e99F02c'
 
 async function main() {
   console.log('deploying...')

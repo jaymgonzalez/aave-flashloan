@@ -1,0 +1,7 @@
+{
+  "routers": {
+    "UniswapV3": ["0xE592427A0AEce92De3Edee1F18E0157C05861564"],
+    "SushiSwap": ["0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506"],
+    "GMX": ["0xaBBc5F99639c9B6bCb58544ddf04EFA6802F4064"]
+  }
+}
