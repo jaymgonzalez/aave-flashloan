@@ -1,4 +1,4 @@
-export const abi = [
+const daiAbi = [
   {
     inputs: [{ internalType: 'uint256', name: 'chainId_', type: 'uint256' }],
     payable: false,
@@ -274,3 +274,5 @@ export const abi = [
     type: 'function',
   },
 ]
+
+module.exports = { daiAbi }
