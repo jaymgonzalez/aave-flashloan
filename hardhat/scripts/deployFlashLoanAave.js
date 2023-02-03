@@ -1,17 +1,21 @@
 const hre = require('hardhat')
+// Arbitrum
+const providerAddress = '0xa97684ead0e402dC232d5A977953DF7ECBaB3CDb'
+const swapAddress = '0xE9061F92bA9A3D9ef3f4eb8456ac9E552B3Ff5C8'
 
 async function main() {
   console.log('deploying...')
   const FlashLoanArbitrage = await hre.ethers.getContractFactory(
-    'FlashLoanArbitrage'
+    'AaveFlashLoan'
   )
   const flashLoanArbitrage = await FlashLoanArbitrage.deploy(
-    '0x2f39d218133AFaB8F2B819B1066c7E434Ad94E9e'
+    providerAddress,
+    swapAddress
   )
 
   await flashLoanArbitrage.deployed()
 
-  console.log('Flash loan contract deployed: ', flashLoanArbitrage.address)
+  console.log('Flash loan contract deployed:', flashLoanArbitrage.address)
 }
 
 main().catch((error) => {

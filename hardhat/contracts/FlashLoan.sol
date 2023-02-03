@@ -30,8 +30,8 @@ contract FlashLoan is FlashLoanSimpleReceiverBase {
         address asset,
         uint256 amount,
         uint256 premium,
-        address initiator,
-        bytes calldata params
+        address,
+        bytes calldata
     ) external override returns (bool) {
         //
         // This contract now has the funds requested.

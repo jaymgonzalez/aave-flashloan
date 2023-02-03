@@ -1,9 +1,11 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-pragma solidity =0.7.6;
+pragma solidity ^0.8.0;
 pragma abicoder v2;
 
 import "@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol";
 import "@uniswap/v3-periphery/contracts/libraries/TransferHelper.sol";
+
+import "hardhat/console.sol";
 
 contract Swap {
     ISwapRouter public immutable swapRouter;
@@ -36,6 +38,8 @@ contract Swap {
             address(this),
             amountIn
         );
+
+        console.log("We are in the swap area");
 
         // Approve the router to spend DAI.
         TransferHelper.safeApprove(DAI, address(swapRouter), amountIn);
@@ -77,12 +81,12 @@ contract Swap {
 
         // Approve the router to spend the specifed `amountInMaximum` of DAI.
         // In production, you should choose the maximum amount to spend based on oracles or other data sources to acheive a better swap.
-        TransferHelper.safeApprove(DAI, address(swapRouter), amountInMaximum);
+        TransferHelper.safeApprove(WETH9, address(swapRouter), amountInMaximum);
 
         ISwapRouter.ExactOutputSingleParams memory params = ISwapRouter
             .ExactOutputSingleParams({
-                tokenIn: DAI,
-                tokenOut: WETH9,
+                tokenIn: WETH9,
+                tokenOut: DAI,
                 fee: poolFee,
                 recipient: msg.sender,
                 deadline: block.timestamp,
@@ -97,9 +101,9 @@ contract Swap {
         // For exact output swaps, the amountInMaximum may not have all been spent.
         // If the actual amount spent (amountIn) is less than the specified maximum amount, we must refund the msg.sender and approve the swapRouter to spend 0.
         if (amountIn < amountInMaximum) {
-            TransferHelper.safeApprove(DAI, address(swapRouter), 0);
+            TransferHelper.safeApprove(WETH9, address(swapRouter), 0);
             TransferHelper.safeTransfer(
-                DAI,
+                WETH9,
                 msg.sender,
                 amountInMaximum - amountIn
             );

@@ -10,7 +10,11 @@ const ARBITRUM_RPC_URL = process.env.ARBITRUM_RPC_URL || ''
 
 module.exports = {
   solidity: {
-    compilers: [{ version: '0.8.10' }, { version: '0.7.6' }],
+    compilers: [
+      { version: '0.8.10' },
+      { version: '0.8.0' },
+      { version: '0.7.6' },
+    ],
   },
   defaultNetwork: 'localhost',
   networks: {
